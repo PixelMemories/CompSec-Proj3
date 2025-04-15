@@ -1,0 +1,5 @@
+hidefile.c
+hidefile.so
+Makefile
+output-hid.txt
+visible.txt

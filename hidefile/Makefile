@@ -29,16 +29,16 @@ test:	all
 	@ echo;echo "setting BLOCKED=.csv"
 	@ echo cat testfile.csv should fail
 	export BLOCKED=.csv LD_PRELOAD="$$PWD"/hidefile.so; cat testfile.csv && echo open succeeded - test failed || echo open failed - test passed
-	@ echo;echo cat tesfile.a should succeed
+	@ echo;echo cat testfile.a should succeed
 	cat testfile.a && echo open succeeded - test passed || echo open failed - test failed
-	@ echo;echo "setting BLOCKEFD=.csv:b:.a"
-	@ echo cat tesfile.a should fail
+	@ echo;echo "setting BLOCKED=.csv:b:.a"
+	@ echo cat testfile.a should fail
 	export BLOCKED=.csv:b:a LD_PRELOAD="$$PWD"/hidefile.so; cat testfile.a && echo open succeeded - test failed || echo open failed - test passed
-	@ echo;echo cat tesfile.a should fail
+	@ echo;echo cat testfile.a should fail
 	export BLOCKED=.csv:b:a LD_PRELOAD="$$PWD"/hidefile.so; cat testfile.b && echo open succeeded - test failed || echo open failed - test passed
 	@ echo;echo "setting BLOCKED=a_long_string_that_should-not_cause_problems"
-	@ echo cat tesfile.a should succeed 
+	@ echo cat testfile.a should succeed 
 	export BLOCKED=a_long_string_that_should-not_cause_problems LD_PRELOAD="$$PWD"/hidefile.so; cat testfile.a && echo open succeeded - test passed || echo open failed - test failed
 
 clean:
-	rm -f hidefile.so secret-1.txt secret-2.txt secret-3.txt testfile.a testile.b testfile.csv
+	rm -f hidefile.so secret-1.txt secret-2.txt secret-3.txt testfile.a testfile.b testfile.csv
